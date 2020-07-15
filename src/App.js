@@ -1,14 +1,18 @@
 import React from "react";
 import "./App.css";
 
-function Box() {
-  return <div className="box">Box</div>;
+function Card() {
+  return <div className="card">Card</div>;
+}
+
+function Box({ card }) {
+  return <div className="box">{card ? <Card /> : "Box"}</div>;
 }
 
 function App() {
   return (
     <div className="app">
-      <Box></Box>
+      <Box card></Box>
       <Box></Box>
       <Box></Box>
     </div>

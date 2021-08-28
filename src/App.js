@@ -3,14 +3,12 @@ import "./App.css";
 import { useDrag, useDrop } from "react-dnd";
 
 function Card() {
-  const [{ isDragging }, dragRef] = useDrag({
-    item: {
-      type: "card",
-    },
+  const [{ isDragging }, dragRef] = useDrag(() => ({
+    type: "card",
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
-  });
+  }));
   return (
     <div
       className="card"
@@ -25,13 +23,13 @@ function Card() {
 }
 
 function Box({ card, moveCard }) {
-  const [{ isOver }, dropRef] = useDrop({
+  const [{ isOver }, dropRef] = useDrop(() => ({
     accept: "card",
     drop: () => moveCard(),
     collect: (monitor) => ({
-      isOver: !!monitor.isOver(),
+      isOver: monitor.isOver(),
     }),
-  });
+  }));
   return (
     <div
       className="box"
